@@ -1,0 +1,70 @@
+//
+// Mixins
+// --------------------------------------------------
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin absolute-horizontal-centering {
+    position: absolute;
+    display: block;
+
+    left: 50%;
+    @include translate(-50%, 0%);
+}
+
+@mixin absolute-vertical-centering {
+    position: absolute;
+    display: block;
+
+    top: 50%;
+    @include translate(0%, -50%);
+}
+
+@mixin absolute-horizontal-vertical-centering {
+    position: absolute;
+    display: block;
+
+    left: 50%;
+    top: 50%;
+    @include translate(-50%, -50%);
+}
+
+@mixin auto-hypenation {
+    // -ms-word-break: break-all;
+    // word-break: break-all;
+
+    // /* Non standard for webkit */
+    // word-break: break-word;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+@mixin input-placeholder {
+    &.placeholder { @content; }
+    &:-moz-placeholder { @content; }
+    &::-moz-placeholder { @content; }
+    &:-ms-input-placeholder { @content; }
+    &::-webkit-input-placeholder { @content; } 
+}
+
+
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

@@ -1,0 +1,174 @@
+@import "compass/css3";
+@import "compass/reset";
+@import "utility/mixins.scss";
+
+$body-bg-color: white;
+$app-bg-color: white;
+
+$base-text-color: #5E6A7C;
+$strong-text-color: #414E5F;
+$light-text-color: #8A9599;
+$very-light-text-color: #c6c7c9;
+
+$separator-color: #E7E9EB;
+$star-empty-color: #D6D6D6;
+
+* {
+    @include box-sizing(border-box);
+}
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    line-height: 1.5em;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background-color: $body-bg-color;
+    color: $base-text-color;
+}
+
+.app {
+    @include clearfix;
+    padding: 1.5em;
+    max-width: 44em;
+    margin: 0px auto;
+    margin-bottom: 1em;
+
+    .icon {
+        margin-bottom: 1em;
+    }
+
+    .name {
+        font-size: 1.25em;
+        margin-bottom: 1.5em;
+    }
+}
+.info-blocks {
+    display: flex; 
+    flex-wrap:  wrap;
+    justify-content: flex-start;
+    margin-left:  -3em;
+}
+
+.info-block {
+    margin-left: 3em;
+    margin-bottom: 1em;
+    height: 6.5em;
+    min-width: 6.5em;
+}
+
+.app-rank-value, .app-rating-value {
+    font-size: 2em;
+    color: $strong-text-color;
+    margin-bottom: 0.8rem;
+}
+
+.app-rank-label, .app-rating-label {
+    color: $light-text-color;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+.app-rank-label-secondary {
+    color: $very-light-text-color;
+    font-size: 0.9em;
+}
+
+.separator-full, .separator-small {
+    border: 0px;
+    color: $light-text-color;
+    background-color: $separator-color;
+    height: 1px;
+    margin: 0px;
+    margin-bottom: 1.5em;
+}
+
+.separator-small {
+    width: 7.5em;
+}
+
+.app-rating {
+    polygon {
+        fill: #F5A623;
+    }
+}
+
+[class="rating0.5"] { #stars polygon:nth-child(n+2)  { fill: $star-empty-color; } }
+[class="rating1"] { #stars polygon:nth-child(n+3)    { fill: $star-empty-color; } }
+[class="rating1.5"] { #stars polygon:nth-child(n+4)  { fill: $star-empty-color; } }
+[class="rating2"] { #stars polygon:nth-child(n+5)    { fill: $star-empty-color; } }
+[class="rating2.5"] { #stars polygon:nth-child(n+6)  { fill: $star-empty-color; } }
+[class="rating3"] { #stars polygon:nth-child(n+7)    { fill: $star-empty-color; } }
+[class="rating3.5"] { #stars polygon:nth-child(n+8)  { fill: $star-empty-color; } }
+[class="rating4"] { #stars polygon:nth-child(n+9)    { fill: $star-empty-color; } }
+[class="rating4.5"] { #stars polygon:nth-child(n+10) { fill: $star-empty-color; } }
+[class="rating5"] { #stars polygon:nth-child(n+11)   { fill: $star-empty-color; } }
+
+.app-reviews {
+    hr:last-child {
+        display: none;
+    }
+}
+
+.review-header {
+    margin-top: 2em;
+    margin-bottom: 1.5em;
+}
+
+.review-header-value {
+    font-size: 2em;
+    color: $strong-text-color;
+}
+.review-header-label {
+    color: $light-text-color;
+    font-size: 0.9em;
+}
+
+.review {
+    margin-bottom: 1.5em;
+}
+
+.review-title {
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    color: $strong-text-color;
+
+    .review-title-text {
+        cursor: pointer;
+        display: inline-block;
+        margin-right: 0.5em; 
+    }
+
+    svg {
+        position: relative;
+        top: 0.2em; 
+    }
+
+    polygon {
+        fill: $star-empty-color;
+    }
+
+    [class="rating1"] { #stars polygon:nth-child(n+3) { display: none; } }
+    [class="rating2"] { #stars polygon:nth-child(n+5) { display: none; } }
+    [class="rating3"] { #stars polygon:nth-child(n+7) { display: none; } }
+    [class="rating4"] { #stars polygon:nth-child(n+9) { display: none; } }
+}
+
+.review-info {
+    font-size: 0.9em;
+    color: $very-light-text-color;
+}
+
+.review-comment {
+    font-size: 0.9em;
+
+    &.short {
+        max-height: 3rem;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Firmament Dashboard</title>
+        <meta charset="utf-8" />
+        <script src="js/url-parameters.js"></script>
+        <script src="js/itunes-reviews.js"></script>
+        <script src="js/mustache.min.js"></script>
+        <script src="js/vibrant.min.js"></script>
+        <script src="js/dashboard.js"></script>
+
+        <link rel="stylesheet" href="css/dashboard.css" type="text/css"> 
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    </head>
+    <body>
+
+        <div id="apps"></div>
+        <script>
+            dashboard();
+        </script>
+
+        <script id="apps-template" type="x-tmpl-mustache">
+            <div class="app" id="{{trackId}}">
+                <div class="icon"><img id="{{trackId}}-icon" src="{{artworkUrl100}}" crossorigin="anonymous"></div>
+                <div class="name" id="{{trackId}}-app-name">{{trackName}}</div>
+
+                <hr class="separator-full">
+                <div class="info-blocks"></div>
+                <hr class="separator-full">
+                
+                <div class="app-reviews"></div>
+            </div>
+        </script>
+
+        <script id="app-rank-template" type="x-tmpl-mustache">
+            <div class="app-rank info-block">
+                <div class="app-rank-value">{{rank-value}}</div>
+                <div class="app-rank-label">{{rank-label}}</div>
+                <div class="app-rank-label-secondary">{{rank-category}}</div>
+            </div>
+        </script>
+        
+        <script id="app-rating-template" type="x-tmpl-mustache">
+            <div class="app-rating info-block">
+            <div class="app-rating-value">{{rating}}</div>
+            <div class="app-rating-label">{{label}}</div>
+            
+                {{> rating_template}}
+            </div>
+        </script>
+
+        <script id="app-reviews-template" type="x-tmpl-mustache">
+            <div class="review-header">
+                <span class="review-header-value">{{reviews-count}}</span>
+                <span class="review-header-label">reviews</span>
+            </div>
+            {{#reviews}}
+            <div class="review">
+                <div class="review-title"><span class="review-title-text">{{title}}</span> {{> rating_template}}</div>
+                <div class="review-info">{{updated}} &ndash; {{author}}</div>
+                <div class="review-comment short">{{comment}}</div>
+            </div>
+            <hr class="separator-small">
+            {{/reviews}}
+        </script>
+        
+        <script id="rating-template" type="x-tmpl-mustache">
+            <svg width="108px" height="19px" viewBox="0 0 108 19" version="1.1" xmlns="http://www.w3.org/2000/svg" class="rating{{rating}}">
+            <g id="stars" fill="#F6A623">
+            <polygon id="Star-left" points="9.99996104 14.9832752 4.12866222 18.0699997 5.24998052 11.5322124 0.5 6.90212571 7.06431163 5.94827539 9.99996104 0 "></polygon>
+            <polygon id="Star-right" transform="translate(14.749942, 9.035000) scale(-1, 1) translate(-14.749942, -9.035000) " points="19.4999221 14.9832752 13.6286233 18.0699997 14.7499416 11.5322124 9.99996104 6.90212571 16.5642727 5.94827539 19.4999221 0 "></polygon>
+            <polygon id="Star-left" points="31.999961 14.9832752 26.1286622 18.0699997 27.2499805 11.5322124 22.5 6.90212571 29.0643116 5.94827539 31.999961 0 "></polygon>
+            <polygon id="Star-right" transform="translate(36.749942, 9.035000) scale(-1, 1) translate(-36.749942, -9.035000) " points="41.4999221 14.9832752 35.6286233 18.0699997 36.7499416 11.5322124 31.999961 6.90212571 38.5642727 5.94827539 41.4999221 0 "></polygon>
+            <polygon id="Star-left" points="53.999961 14.9832752 48.1286622 18.0699997 49.2499805 11.5322124 44.5 6.90212571 51.0643116 5.94827539 53.999961 0 "></polygon>
+            <polygon id="Star-right" transform="translate(58.749942, 9.035000) scale(-1, 1) translate(-58.749942, -9.035000) " points="63.4999221 14.9832752 57.6286233 18.0699997 58.7499416 11.5322124 53.999961 6.90212571 60.5642727 5.94827539 63.4999221 0 "></polygon>
+            <polygon id="Star-left" points="75.999961 14.9832752 70.1286622 18.0699997 71.2499805 11.5322124 66.5 6.90212571 73.0643116 5.94827539 75.999961 0 "></polygon>
+            <polygon id="Star-right" transform="translate(80.749942, 9.035000) scale(-1, 1) translate(-80.749942, -9.035000) " points="85.4999221 14.9832752 79.6286233 18.0699997 80.7499416 11.5322124 75.999961 6.90212571 82.5642727 5.94827539 85.4999221 0 "></polygon>
+            <polygon id="Star-left" points="97.999961 14.9832752 92.1286622 18.0699997 93.2499805 11.5322124 88.5 6.90212571 95.0643116 5.94827539 97.999961 0 "></polygon>
+            <polygon id="Star-right" transform="translate(102.749942, 9.035000) scale(-1, 1) translate(-102.749942, -9.035000) " points="107.499922 14.9832752 101.628623 18.0699997 102.749942 11.5322124 97.999961 6.90212571 104.564273 5.94827539 107.499922 0 "></polygon>
+            </g>
+            </svg>
+        </script>            
+
+    </body>
+</html>
