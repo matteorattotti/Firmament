@@ -1,2 +1,2 @@
 # Firmament
-A minimal dashboard for iOS and Mac apps rating/reviews
+A minimal rating/reviews dashboard for iOS and Mac apps 
