@@ -95,7 +95,7 @@ var iTunesReviews = function () {
 
         var aClient = new JsonHttpClient();
         aClient.get(url, function(response) {
-            console.log(response);
+            //console.log(response);
             var entry = response['feed']['entry'];
             var links = response['feed']['link'];
 
@@ -171,11 +171,12 @@ var iTunesReviews = function () {
 
     this.getAppInfo = function(appID, country, success) {
     
-        var url = 'https://itunes.apple.com/lookup?country=' + country + '&id=' + appID + '&entity=software';
+        var url = 'https://itunes.apple.com/lookup?id=' + appID + '&entity=software' + '&country=' + country;
         
         console.log(url);
 
         sendJsonpRequest(url, function(response) {
+            //console.log(response);
             var resultCount = response['resultCount'];
             if(resultCount > 0) {
                 var appData = response['results'][0];

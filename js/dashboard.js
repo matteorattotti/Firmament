@@ -90,14 +90,14 @@ function grabRanks(appID, appStore, appInfo) {
     }
 
     if(appInfo["price"] == 0) {
-        renderRank(appID, topFree, "", "", "Top Free");
+        renderRank(appID, appStore, topFree, "", "", "Top Free");
     }
 
     renderRank(appID, appStore, topGrossing, "", "", "Top Grossing");
 
     // Category
-    //renderRank(appID, topGrossing, categoryName, categoryID, "Top Grossing");
-    //renderRank(appID, topFree, categoryName, categoryID, "Top Free");
+    //renderRank(appID, appStore, topGrossing, categoryName, categoryID, "Top Grossing");
+    //renderRank(appID, appStore, topFree, categoryName, categoryID, "Top Free");
 }
 
 
