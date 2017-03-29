@@ -158,7 +158,7 @@ var iTunesReviews = function () {
                 review['id'] = entry.getElementsByTagName("id")[0].textContent;
                 review['title'] = entry.getElementsByTagName("title")[0].textContent;
                 review['comment'] = entry.getElementsByTagName("content")[0].textContent;
-                review['rating'] = entry.getElementsByTagName("rating")[0].textContent;
+                review['rating'] = entry.getElementsByTagName("im::rating")[0].textContent;
                 review['author'] = author.getElementsByTagName("name")[0].textContent;
 
                 reviews.push(review);
