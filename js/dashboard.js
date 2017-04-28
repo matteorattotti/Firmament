@@ -50,11 +50,9 @@ function grabReviews(appID, appStore, appInfo) {
         var reviews_target = document.getElementById(appID).getElementsByClassName("app-reviews")[0].innerHTML += reviews_rendered;
 
 
-        [].forEach.call( document.querySelectorAll('.review-title-text'), function(el) {
-            el.addEventListener('click', function(e) {
-                this.parentElement.nextElementSibling.nextElementSibling.classList.toggle("short");
-            }, false);
-        }); 
+        // Making clamped rewview clickable to expand the full text
+        makeReviewTextClickable();
+
 
     });
 
@@ -134,3 +132,35 @@ function renderRating(appID, rating, label) {
             {'rating_template':rating_template});
     document.getElementById(appID).getElementsByClassName("info-blocks")[0].innerHTML += app_rating_rendered;
 }
+
+function makeReviewTextClickable(e) {
+    [].forEach.call( document.querySelectorAll('.review-comment.short'), function(el) {
+
+        var needClickToExpand = !isFullTextDisplayed(el);
+        if(needClickToExpand) {
+
+            el.style.setProperty("cursor", "pointer");
+            el.addEventListener('click', function(e) {
+                this.classList.toggle("short");
+            });
+        }
+    }); 
+}
+
+function isFullTextDisplayed(e) {
+    var eLineClamp = Number.parseInt(window.getComputedStyle(e).getPropertyValue("-webkit-line-clamp"));
+    if (isNaN(eLineClamp)) {
+        console.warn("Error - the element has no -webkit-line-clamp set");
+        return false;
+    }
+    var clonedElement = e.cloneNode(true);
+    clonedElement.style.setProperty("-webkit-line-clamp", eLineClamp + 1);
+    clonedElement.style.setProperty("opacity", 0);
+    clonedElement.style.maxHeight = "none";
+    e.parentNode.appendChild(clonedElement);
+    var isFullTextDisplayed = (e.clientHeight == clonedElement.clientHeight);
+    e.parentNode.removeChild(clonedElement);
+
+    return isFullTextDisplayed;
+};
+
