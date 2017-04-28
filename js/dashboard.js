@@ -34,6 +34,12 @@ function renderAppInfo(appID, appInfo) {
     var app_template = document.getElementById("apps-template").innerHTML;
     var app_rendered = Mustache.render(app_template, appInfo);
     var app_target = document.getElementById("apps").innerHTML += app_rendered;
+
+    // Adding link for apple icon
+    var link = document.createElement('link');
+    link.rel = 'apple-touch-icon-precomposed';
+    link.href = appInfo["artworkUrl100"];
+    document.head.appendChild(link); 
 }
 
 
